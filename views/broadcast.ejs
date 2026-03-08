@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuvToBroadcast | Broadcast Room</title>
+    <link rel = "stylesheet" type = "text/css" href = "/stylesheets/broadcast.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel = "icon" type = "image/icom" href = "/images/broadcast.png">
+</head>
+<body>
+ <div class="animated-bg">
+        <div class="bg-gradient"></div>
+        <div class="floating-shapes" id="shapes"></div>
+    </div>
+
+    <div class="broadcast-container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="user-greeting">
+                <div class="avatar">
+                    <%= name.charAt(0).toUpperCase() %>
+                </div>
+                <div class="greeting-text">
+                    <h1>Welcome back, <%= name %>!</h1>
+                    <span class="badge">
+                        <i class="fas fa-star"></i> Broadcaster
+                    </span>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="connect" class="btn btn-connect">
+                    <i class="fas fa-plug"></i>
+                    <span>Connect</span>
+                </button>
+                <button id="disconnect" class="btn btn-disconnect" disabled>
+                    <i class="fas fa-power-off"></i>
+                    <span>Disconnect</span>
+                </button>
+                <button id="back" class="btn btn-back">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Broadcast Card -->
+        <div class="broadcast-card">
+            <div class="broadcast-header">
+                <div class="broadcast-title">
+                    <i class="fas fa-satellite-dish" style="font-size: 2rem; color: #4ade80;"></i>
+                    <h2>Broadcasting Server</h2>
+                </div>
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span>Live</span>
+                </div>
+            </div>
+
+            <!-- Hidden Name Label -->
+            <label id="name"><%= name %></label>
+
+            <!-- Messages Container -->
+            <div class="messages-wrapper">
+                <div id="messages">
+                    <!-- Messages will appear here -->
+                </div>
+                <div class="typing-indicator" id="typingIndicator">
+                    <span class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <span id="typingText">Someone is typing...</span>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <div class="input-wrapper">
+                    <input type="text" id="message" placeholder="Type your message..." required>
+                    <i class="fas fa-pen input-icon"></i>
+                </div>
+                <button id="send">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Send</span>
+                </button>
+            </div>
+
+            <!-- Online Users Sidebar -->
+            <div class="users-sidebar">
+                <div class="users-header">
+                    <h3><i class="fas fa-users"></i> Online Members</h3>
+                    <span class="online-count" id="onlineCount">0</span>
+                </div>
+                <div id="onlineUsers">
+                    <!-- Online users will appear here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-bell" id="toastIcon"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script type = "module" src = "/javascripts/broadcast.js"></script>
+<script>
+  function createShapes() {
+            const shapesContainer = document.getElementById('shapes');
+            const shapeCount = 10;
+
+            for (let i = 0; i < shapeCount; i++) {
+                const shape = document.createElement('div');
+                shape.className = 'shape';
+                
+                const size = Math.random() * 100 + 50;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 5;
+                
+                shape.style.width = `${size}px`;
+                shape.style.height = `${size}px`;
+                shape.style.left = `${posX}%`;
+                shape.style.top = `${posY}%`;
+                shape.style.animationDelay = `${delay}s`;
+                
+                shapesContainer.appendChild(shape);
+            }
+        }
+
+        createShapes();
+</script>
+</body>
+</html>

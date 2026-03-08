@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuvToBroadcast | Share Your Voice</title>
+    <link rel = "icon" type = "image/icom" href = "/images/broadcast.png">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" type = "text/css" href = "/stylesheets/home.css">
+</head>
+<body>
+     <div class="cosmic-bg"></div>
+    
+    <div class="particles" id="particles"></div>
+    
+    <div class="shooting-stars" id="shootingStars"></div>
+
+    <div class="container">
+        <div class="glass-card">
+            <div class="header">
+                <div class="logo-wrapper">
+                    <span class="broadcast-icon">📡</span>
+                </div>
+                <h1 class="title">
+                    <span class="gradient-text">LuvTo</span>
+                    <span class="sparkle">✨</span>
+                    <span class="gradient-text">Broadcast</span>
+                </h1>
+                <p class="subtitle">Share your voice with the universe</p>
+                <div class="typewriter" id="typewriter"></div>
+            </div>
+
+            <div class="input-section">
+                <div class="input-wrapper">
+                    <span class="input-icon">👤</span>
+                    <input 
+                        type="text" 
+                        id="nameInput" 
+                        placeholder="Enter your name..."
+                        class="aesthetic-input"
+                        autocomplete="off"
+                        maxlength="20"
+                    />
+                    <div class="input-border"></div>
+                    <span class="char-counter" id="charCounter">0/20</span>
+                </div>
+
+                <button id="sendBtn" class="magical-button">
+                    <span class="button-glow"></span>
+                    <span class="button-particles"></span>
+                    <span class="button-content">
+                        <span>Enter Broadcast</span>
+                        <span>🚀</span>
+                    </span>
+                </button>
+            </div>
+
+            <div class="features">
+                <div class="feature-item">
+                    <span class="feature-emoji">📢</span>
+                    <span class="feature-text">Broadcast</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-emoji">💫</span>
+                    <span class="feature-text">Magical</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-emoji">🎨</span>
+                    <span class="feature-text">Aesthetic</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <span class="toast-icon">✨</span>
+        <span class="toast-message" id="toastMessage"></span>
+    </div>
+</body>
+</body>
+    <script type="module" src="/javascripts/home.js"></script>
+</body>
+</html>
