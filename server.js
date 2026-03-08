@@ -69,7 +69,15 @@ io.on('connection', (socket) => {
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.set("view engine","ejs")
-app.use(express.static(path.join(__dirname,"public")))
+app.use(express.static(path.join(__dirname,"public"), {
+  setHeaders: (res, path) => {
+    if (path.endsWith('.css')) {
+      res.set('Content-Type', 'text/css; charset=utf-8');
+    } else if (path.endsWith('.js')) {
+      res.set('Content-Type', 'application/javascript');
+    }
+  }
+}))
 
 
 
